@@ -173,11 +173,11 @@ const SECTIONS = [
     name: '人纪',
     en: 'Ren Ji',
     desc: '内经 · 伤寒 · 金匮 · 针灸',
-    status: 'soon' as const,
-    when: '7 月',
+    status: 'ready' as const,
+    when: '已开放',
     icon: '⊕',  // 圆+十字（医道/阴阳调和），与 ⊙/⊞ 同字宽
     note: '',
-    href: '',
+    href: '/renji',
   },
 ];
 
