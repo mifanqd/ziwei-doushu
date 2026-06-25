@@ -739,9 +739,8 @@ export default function HomePage() {
               const ready = s.status === 'ready';
               return (
                 <motion.a key={s.key} href={s.href || undefined}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.15, duration: 0.5 }}
-                  viewport={{ once: true }}
                   style={{ cursor: s.href ? 'pointer' : 'default', textDecoration: 'none', color: 'inherit' }}
                   className="relative flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center gap-4 lg:gap-0">
                   {/* 节点圆 */}
