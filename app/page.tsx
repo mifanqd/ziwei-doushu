@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import StarField from '@/components/StarField';
 import { useTheme, type Theme } from '@/components/ThemeProvider';
@@ -737,12 +738,11 @@ export default function HomePage() {
           <div className="flex flex-col gap-5 lg:grid lg:grid-cols-4 lg:gap-4">
             {SECTIONS.map((s, i) => {
               const ready = s.status === 'ready';
-              return (
-                <motion.div key={s.key}
+              const Card = (
+                <motion.div
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.15, duration: 0.5 }}
                   viewport={{ once: true }}
-                  onClick={() => { if (s.href) router.push(s.href); }}
                   style={{ cursor: s.href ? 'pointer' : 'default' }}
                   className="relative flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center gap-4 lg:gap-0">
                   {/* 节点圆 */}
@@ -806,6 +806,11 @@ export default function HomePage() {
                     </div>
                   </div>
                 </motion.div>
+              );
+              return s.href ? (
+                <Link key={s.key} href={s.href} className="contents" aria-label={s.name}>{Card}</Link>
+              ) : (
+                <div key={s.key} className="contents">{Card}</div>
               );
             })}
           </div>
