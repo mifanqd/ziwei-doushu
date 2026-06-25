@@ -141,29 +141,32 @@ const SECTIONS = [
     en: 'Zi Wei',
     desc: '14 主星 · 13 宫位 · AI 解读',
     status: 'ready' as const,
-    when: '5 月',
+    when: '已开放',
     icon: '◉',  // 实心圆+内点，紫微星视觉
     note: '',
+    href: '/chart',
   },
   {
     key: 'tianji',
     name: '天纪',
     en: 'Tian Ji',
-    desc: '紫微 · 周易 · 奇门遁甲',
-    status: 'soon' as const,
-    when: '6 月',
+    desc: '紫微 · 易经 · 堪舆 · 面相',
+    status: 'ready' as const,
+    when: '已开放',
     icon: '⊙',  // 圆+内点（古文"日"），与 ◉ 同字宽
     note: '',
+    href: '/tianji',
   },
   {
     key: 'diji',
     name: '地纪',
     en: 'Di Ji',
     desc: '倪师未竟之业 · 后辈补注',
-    status: 'soon' as const,
-    when: '6 月',
+    status: 'ready' as const,
+    when: '已开放',
     icon: '⊞',  // 方+井（地/田视觉），与 ⊙ 同字宽
     note: '遗稿研读',
+    href: '/diji',
   },
   {
     key: 'renji',
@@ -174,6 +177,7 @@ const SECTIONS = [
     when: '7 月',
     icon: '⊕',  // 圆+十字（医道/阴阳调和），与 ⊙/⊞ 同字宽
     note: '',
+    href: '',
   },
 ];
 
@@ -738,6 +742,8 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.15, duration: 0.5 }}
                   viewport={{ once: true }}
+                  onClick={() => { if (s.href) router.push(s.href); }}
+                  style={{ cursor: s.href ? 'pointer' : 'default' }}
                   className="relative flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center gap-4 lg:gap-0">
                   {/* 节点圆 */}
                   <div className="relative w-14 h-14 shrink-0 rounded-full flex items-center justify-center lg:mb-3"
